@@ -3,3 +3,19 @@
 
 - 토크나이저 json 파일(`1930s_ko_lit_tokenizer.json`)을 활용한 토크나이징 가능.
 - json 파일 활용과 관련해서는 [ModernKoreanSubword](https://github.com/ByungjunKim/ModernKoreanSubword) 참고.
+
+```
+from kiwipiepy import Kiwi
+from kiwipiepy.sw_tokenizer import SwTokenizer
+from kiwipiepy.sw_tokenizer import SwTokenizerConfig
+
+kiwi = Kiwi()
+
+# 토크나이저 설정
+tokenizer = SwTokenizer('./1930s_ko_lit_tokenizer.json', kiwi=kiwi)
+
+# 토크나이징
+tokenizer.encode('肉身이흐느적흐느적하도록 疲勞했을때만 情身이 銀貨처럼 맑소')
+vocab_list = tokenizer.encode('肉身이흐느적흐느적하도록 疲勞했을때만 情身이 銀貨처럼 맑소')
+[tokenizer.id2vocab[i] for i in vocab_list]
+```
